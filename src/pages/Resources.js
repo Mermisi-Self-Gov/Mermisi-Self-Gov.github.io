@@ -2,18 +2,11 @@ import { Container, Row, Col, Card, CardGroup, Alert } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import ResourceThumbnail from '../components/ResourceThumbnail.js'
 
-export default function Resources({ database, setDatabase }) {
+export default function Resources({ data, update }) {
   
-  const [ activities, setActivities ] = useState(database[3])
+  const [ activities, setActivities ] = useState(data)
   useEffect(() => {
-    fetch(`${window.location.origin}${process.env.PUBLIC_URL}/activities.json`)
-    .then(res => res.json())
-    .then(
-      (result) => {
-        setDatabase(oldData => [oldData[0], oldData[1], oldData[2], result])
-        setActivities(oldData => result)
-      }
-    )
+    update()
   }, [])
 
   return (
@@ -65,7 +58,7 @@ export default function Resources({ database, setDatabase }) {
           </Col>
         </Row>
         <Row className="g-3">
-          { database[3].map(activity => <ResourceThumbnail activity={activity} key={activity.id}/>) }
+          { data.map(activity => <ResourceThumbnail activity={activity} key={activity.id}/>) }
         </Row>
       </Container>
       
