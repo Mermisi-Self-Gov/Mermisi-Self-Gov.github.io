@@ -1,4 +1,4 @@
-import HorizontalThumbnail from '../components/HorizontalThumbnail.js'
+import ArticleThumbnail from '../components/ArticleThumbnail.js'
 import { Container, Row } from 'react-bootstrap'
 import React, { useEffect } from 'react'
 
@@ -12,7 +12,7 @@ export default function Newspaper({ data, update }) {
     <>
       <Container className="my-3">
         <Row className="g-3">
-          { data.map(article => <HorizontalThumbnail article={article} key={article.id}/>) }
+          { data.map(article => <ArticleThumbnail article={article} key={article.id}/>) }
         </Row>
       </Container>
     </>

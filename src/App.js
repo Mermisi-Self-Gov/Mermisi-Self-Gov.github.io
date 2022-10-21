@@ -90,8 +90,8 @@ function App() {
         <Route exact path="/newspaper"   element={<Newspaper data={articles } update={updateArticles(setArticles)}/>}/>
         <Route exact path="/archive"     element={<Archive   data={projects } update={updateProjects(setProjects)}/>}/>
         <Route exact path="/resources"   element={<Resources data={resources} update={updateResources(setResources)}/>}/>
-        <Route exact path="/article/:id" element={<Article/>}/>
-        <Route exact path="/project/:id" element={<Project/>}/>
+        <Route exact path="/archive/:id" element={<Project/>}/>
+        <Route exact path="/newspaper/:id" element={<Article/>}/>
       </Routes>
       <Footer/>
     </div>

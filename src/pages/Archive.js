@@ -2,7 +2,7 @@ import { Container, Row } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 
 import Filter from '../components/Filter.js'
-import GridThumbnail from '../components/GridThumbnail.js'
+import ProjectThumbnail from '../components/ProjectThumbnail.js'
 
 
 export default function Archive({data, update}) {
@@ -26,7 +26,7 @@ export default function Archive({data, update}) {
       <Container className="my-3">
         <Row className="g-3">
           <Filter all={data[1]} sel={selected} onChange={handleTags}/>
-          { data[0].filter(proj => {return (proj.taghash & hash) === hash}).map(project => <GridThumbnail project={project} key={project.id}/>) }
+          { data[0].filter(proj => {return (proj.taghash & hash) === hash}).map(project => <ProjectThumbnail project={project} key={project.id}/>) }
         </Row>
       </Container>
     </>

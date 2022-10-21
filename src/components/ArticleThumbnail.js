@@ -1,6 +1,6 @@
 import { Col, Card } from 'react-bootstrap'
 
-export default function HorizontalThumbnail({ article }) {
+export default function ArticleThumbnail({ article }) {
   return (
     <>
        <Col md={6}>
