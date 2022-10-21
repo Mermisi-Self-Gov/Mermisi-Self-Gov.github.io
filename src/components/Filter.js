@@ -1,20 +1,22 @@
 import { Col, Card, Form, InputGroup } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 
-function TagCheckbox({tag}) {
-  return (
-    <Form.Check 
-      inline
-      className="text-primary"
-      type="checkbox"
-      id={`${tag}-checkbox`}
-      label={`#${tag}`}
-    />
-  )
-}
-
-export default function Filter({tagset}) {
-  const [selectedTags, setSelectedTags] = useState([]);
+export default function Filter({ all, sel, onChange }) {
+  
+  function TagCheckbox({tag}) {
+    return (
+      <Form.Check 
+        inline
+        className="text-primary"
+        type="checkbox"
+        checked={ sel.includes(tag) }
+        onChange={ () => { onChange(tag) } }
+        id={`${tag}-checkbox`}
+        label={`#${tag}`}
+      />
+    )
+  }
+  
   return (<>
     <Col>
       <Card>
@@ -22,7 +24,7 @@ export default function Filter({tagset}) {
         <Card.Body>
           <Form>
             <div className="">
-            { tagset.map(subj => <TagCheckbox tag={subj} />) }
+            { all.map(tag => <TagCheckbox tag={tag} key={tag} />) }
             </div>
           </Form>
         </Card.Body>

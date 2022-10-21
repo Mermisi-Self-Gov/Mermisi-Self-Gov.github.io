@@ -31,7 +31,7 @@ export default function Resources({ data, update }) {
               <Card.Body>
                 <Card.Title>Additional benefits</Card.Title>
                 <Card.Text>
-                  You might find these activities useful for your college application. You might also consider joining our team. We've left a few useful links if you are interested in applying abroad, though we expect you to do your own research on the matter.
+                  You might find some of these activities useful for your college application. You might also consider joining our team. We've left a few useful links if you are interested in applying abroad, though we expect you to do your own research on the matter.
                 </Card.Text>
               </Card.Body>
               <Card.Footer>

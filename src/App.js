@@ -28,8 +28,14 @@ function updateProjects(setProjects) {
     .then(res => res.json())
     .then(
       (result) => {
-        let tagset = [...new Set([].concat(...result.map(project => project.tags)))]
-        setProjects(oldData => [result, tagset])
+        let tagset  = [...new Set([].concat(...result.map(project => project.tags)))]
+        let tagdict = {}
+        for (let i = 0; i < tagset.length; i++)
+          tagdict[tagset[i]] = i
+          result.forEach((proj) => {
+            proj.taghash = proj.tags.reduce((acc, cur) => acc + 2**tagdict[cur], 0)
+          })
+        setProjects(oldData => [result, tagset, tagdict])
       }
     )
   })
