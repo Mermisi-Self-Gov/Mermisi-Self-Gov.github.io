@@ -1,13 +1,12 @@
 import { Container, Row, Col, Card, CardGroup, Alert } from 'react-bootstrap'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import ResourceThumbnail from '../components/ResourceThumbnail.js'
 
 export default function Resources({ data, update }) {
   
-  const [ activities, setActivities ] = useState(data)
   useEffect(() => {
     update()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

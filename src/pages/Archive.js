@@ -12,8 +12,7 @@ export default function Archive({data, update}) {
 
   useEffect(() => {
     update()
-  }, [])
-
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleTags(tag) {
     if (selected.includes(tag)) 
@@ -27,7 +26,7 @@ export default function Archive({data, update}) {
       <Container className="my-3">
         <Row className="g-3">
           <Filter all={data[1]} sel={selected} onChange={handleTags}/>
-          { data[0].filter(proj => {return (proj.taghash & hash) == hash}).map(project => <GridThumbnail project={project} key={project.id}/>) }
+          { data[0].filter(proj => {return (proj.taghash & hash) === hash}).map(project => <GridThumbnail project={project} key={project.id}/>) }
         </Row>
       </Container>
     </>

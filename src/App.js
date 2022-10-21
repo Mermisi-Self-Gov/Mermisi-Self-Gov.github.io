@@ -1,7 +1,7 @@
 import NavigationBar from './components/NavigationBar'
 import Footer from './components/Footer'
 
-import About from './pages/About'
+// import About from './pages/About'
 import Archive from './pages/Archive'
 import Article from './pages/Article'
 import Newspaper from './pages/Newspaper'

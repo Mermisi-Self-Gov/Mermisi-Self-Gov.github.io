@@ -1,5 +1,4 @@
-import { Col, Card, Form, InputGroup } from 'react-bootstrap'
-import React, { useState, useEffect } from 'react'
+import { Col, Card, Form } from 'react-bootstrap'
 
 export default function Filter({ all, sel, onChange }) {
   

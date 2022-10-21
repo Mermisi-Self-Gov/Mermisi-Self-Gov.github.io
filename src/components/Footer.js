@@ -10,7 +10,7 @@ export default function Footer() {
               <ListGroup.Item variant="secondary">Contact Us</ListGroup.Item>
               <ListGroup.Item>our.email@our.domain</ListGroup.Item>
               <ListGroup.Item>+995 123 456 789</ListGroup.Item>
-              <ListGroup.Item><a href="">Instagram</a>, <a href="">Facebook</a>, <a href="https://mermisi.edu.ge">School website</a> </ListGroup.Item>
+              <ListGroup.Item><a href="https://instagram.com">Instagram</a>, <a href="https://facebook.com">Facebook</a>, <a href="https://mermisi.edu.ge">School website</a> </ListGroup.Item>
             </ListGroup>
           </Col>
           <Col md={6}>

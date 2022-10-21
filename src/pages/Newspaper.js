@@ -1,12 +1,12 @@
 import HorizontalThumbnail from '../components/HorizontalThumbnail.js'
 import { Container, Row } from 'react-bootstrap'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 export default function Newspaper({ data, update }) {
   
   useEffect(() => {
     update()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
