@@ -31,10 +31,10 @@ function updateProjects(setProjects) {
         let tagset  = [...new Set([].concat(...result.map(project => project.tags)))]
         let tagdict = {}
         for (let i = 0; i < tagset.length; i++)
-          tagdict[tagset[i]] = i
-          result.forEach((proj) => {
-            proj.taghash = proj.tags.reduce((acc, cur) => acc + 2**tagdict[cur], 0)
-          })
+          tagdict[tagset[i]] = i 
+        result.forEach((proj) => {
+          proj.taghash = proj.tags.reduce((acc, cur) => acc + 2**tagdict[cur], 0)
+        })
         setProjects(oldData => [result, tagset, tagdict])
       }
     )
@@ -55,7 +55,7 @@ function updateResources(setResources) {
 function App() {
 
   const [ articles,  setArticles  ] = useState([])
-  const [ projects,  setProjects  ] = useState([[], []])
+  const [ projects,  setProjects  ] = useState([[], [], []])
   const [ resources, setResources ] = useState([])
 
   useEffect(() => {
@@ -86,12 +86,12 @@ function App() {
     <div className="App" style={{scrollBehavior:"smooth"}}>
       <NavigationBar/>
       <Routes>
-        <Route exact path="/"            element={<Newspaper data={articles } update={updateArticles(setArticles)}/>}/>
-        <Route exact path="/newspaper"   element={<Newspaper data={articles } update={updateArticles(setArticles)}/>}/>
-        <Route exact path="/archive"     element={<Archive   data={projects } update={updateProjects(setProjects)}/>}/>
-        <Route exact path="/resources"   element={<Resources data={resources} update={updateResources(setResources)}/>}/>
-        <Route exact path="/archive/:id" element={<Project/>}/>
-        <Route exact path="/newspaper/:id" element={<Article/>}/>
+        <Route exact path="/"              element={<Newspaper data={articles } update={updateArticles(setArticles)}/>}/>
+        <Route exact path="/newspaper"     element={<Newspaper data={articles } update={updateArticles(setArticles)}/>}/>
+        <Route exact path="/archive"       element={<Archive   data={projects } update={updateProjects(setProjects)}/>}/>
+        <Route exact path="/resources"     element={<Resources data={resources} update={updateResources(setResources)}/>}/>
+        <Route exact path="/archive/:id"   element={<Project   data={projects } update={updateProjects(setProjects)}/>}/>
+        <Route exact path="/newspaper/:id" element={<Article   data={articles } update={updateArticles(setArticles)}/>}/>
       </Routes>
       <Footer/>
     </div>
