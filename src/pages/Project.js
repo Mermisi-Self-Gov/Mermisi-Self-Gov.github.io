@@ -8,13 +8,13 @@ export default function Project({ data, update }) {
   
   useEffect(() => {
     update()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (data[0].length > 0) {
       setProject(data[0][id])
     }
-  }, [data])
+  }, [data, id])
   
   return (
     <>

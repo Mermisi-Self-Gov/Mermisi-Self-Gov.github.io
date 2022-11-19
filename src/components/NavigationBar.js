@@ -10,7 +10,7 @@ export default function NavigationBar() {
     <UkraineBanner/>
     <Navbar bg="light" expand="md" className="sticky-top">
       <Container>
-        <Navbar.Brand href="/">Navbar Brand</Navbar.Brand>
+        <Navbar.Brand href="/">Mermisi Self-Gov </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

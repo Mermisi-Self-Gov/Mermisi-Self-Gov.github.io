@@ -17,7 +17,7 @@ export default function Filter({ all, sel, onChange }) {
   }
   
   return (<>
-    <Col>
+    <Col md={6} lg={4} xl={3}>
       <Card>
         <Card.Header>Filter Projects by Tags</Card.Header>
         <Card.Body>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function ArticleThumbnail({ article }) {
   return (
     <>
-       <Col md={6}>
+      <Col md={6}>
         <Link to={`/Newspaper/${article.id}`} style={{textDecoration:"none"}}>
           <Card>
             <Card.Img variant="top" src={ article.thumbnail } />

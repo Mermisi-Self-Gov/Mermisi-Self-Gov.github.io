@@ -1,4 +1,4 @@
-import { Container, Col, Row, Card, ListGroup } from 'react-bootstrap'
+import { Container, Col, Row, Card } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
@@ -8,13 +8,13 @@ export default function Article({ data, update }) {
   
   useEffect(() => {
     update()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (data.length > 0) {
       setArticle(data[id])
     }
-  }, [data])
+  }, [data, id])
   
   return (
     <>
