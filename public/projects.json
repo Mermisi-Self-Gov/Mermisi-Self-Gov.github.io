@@ -2,7 +2,7 @@
   {
     "name":"ანესთეტიკები",
     "authors":["ლუკა რაფავა"],
-    "thumbnail":"/thumbnails/anaesthetics.jpg",
+    "thumbnail":"/thumbnails/anaesthetics.webp",
     "tags":["biology", "chemistry"],
     "date":"06.06.2022",
     "id":0,
@@ -14,7 +14,7 @@
   {
     "name":"პერსპექტივა და მისი იმიტაცია",
     "authors":["ლუკა რაფავა"],
-    "thumbnail":"/thumbnails/gfx.jpg",
+    "thumbnail":"/thumbnails/gfx.webp",
     "tags":["math"],
     "date":"06.06.2022",
     "id":1,
@@ -26,7 +26,7 @@
   {
     "name":"ბილიარდი, ტრიგონომეტრია და ვექტორები",
     "authors":["ალექსანდრე ლომიძე"],
-    "thumbnail":"/thumbnails/pool.jpg",
+    "thumbnail":"/thumbnails/pool.webp",
     "tags":["math", "physics"],
     "date":"12.06.2020",
     "id":2,
