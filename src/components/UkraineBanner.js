@@ -1,4 +1,7 @@
-import { Container, Col, Row, Alert } from 'react-bootstrap' 
+import Container from 'react-bootstrap/Container' 
+import Col       from 'react-bootstrap/Col' 
+import Row       from 'react-bootstrap/Row' 
+import Alert     from 'react-bootstrap/Alert' 
 
 export default function UkraineBanner() {
   return (<>

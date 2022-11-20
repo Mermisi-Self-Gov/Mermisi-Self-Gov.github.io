@@ -1,4 +1,6 @@
-import { Col, Card, Button } from 'react-bootstrap'
+import Col    from 'react-bootstrap/Col'
+import Card   from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 export default function ResourceThumbnail({activity}) {
   return (<>

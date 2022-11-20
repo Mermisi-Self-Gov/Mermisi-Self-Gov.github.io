@@ -2,10 +2,10 @@ import NavigationBar from './components/NavigationBar'
 import Footer from './components/Footer'
 
 // import About from './pages/About'
-import Archive from './pages/Archive'
-import Article from './pages/Article'
+import Archive   from './pages/Archive'
+import Article   from './pages/Article'
 import Newspaper from './pages/Newspaper'
-import Project from './pages/Project'
+import Project   from './pages/Project'
 import Resources from './pages/Resources'
 
 import React, { useState, useEffect } from 'react'
