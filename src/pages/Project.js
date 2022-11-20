@@ -52,7 +52,7 @@ export default function Project({ data, update }) {
                     </Card.Text>
                     */ }
                     {
-                      project.links.map(link => <Card.Link href={link.href} key={link.href}> {link.title} </Card.Link>)
+                      project.links.map(link => <Card.Link href={link.href} key={link.href} target="_blank"> {link.title} </Card.Link>)
                     }
                   </Card.Body>
                 </Card>
