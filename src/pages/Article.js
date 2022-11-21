@@ -21,6 +21,7 @@ export default function Article({ data, update }) {
   
   return (
     <>
+      <style>{`.article-text>img { width:100% } `}</style>
       { /* Thumbnail */}
       <Container className="my-3">
         <Card>
@@ -52,12 +53,14 @@ export default function Article({ data, update }) {
                 { /*
                 <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
                 */ }
-                  <Container>
+                  <Container width="100%">
                     <Row>
                       <Col lg={10} className="offset-lg-1 py-lg-5">
-                        <Card.Text className="" style={{whiteSpace: "pre-line"}}>
-                          { article.text }
-                        </Card.Text>
+                        <Card.Text
+                          className="article-text"
+                          style={{whiteSpace: "pre-line"}} 
+                          dangerouslySetInnerHTML={{ __html: article.text }}
+                        />
                       </Col>
                     </Row>
                   </Container>
