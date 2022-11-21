@@ -10,7 +10,7 @@ export default function GridThumbnail({ project }) {
       <Col md={6} lg={4} xl={3}>
         <Link to={`/Archive/${project.id}`} style={{textDecoration:"none"}}>
           <Card>
-            <Card.Img variant="top" src={ project.thumbnail } alt={`${project.name} thumbnail`} loading="lazy"/>
+            <Card.Img variant="top" src={ project.thumbnaildownscaled } alt={`${project.name} thumbnail`} loading="lazy"/>
             <Card.Body className="pb-2">
               <Card.Title className="">{ project.name }</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">{ project.authors.map(name => ` ${name}`) + `, ${project.date}`}</Card.Subtitle>
