@@ -1,7 +1,7 @@
 import ArticleThumbnail from '../components/ArticleThumbnail.js'
 import Container from 'react-bootstrap/Container'
 import Row       from 'react-bootstrap/Row'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 export default function Newspaper({ data, update }) {
   

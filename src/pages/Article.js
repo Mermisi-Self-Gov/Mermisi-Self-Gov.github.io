@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container'
 import Col       from 'react-bootstrap/Col'
 import Row       from 'react-bootstrap/Row'
 import Card      from 'react-bootstrap/Card'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 export default function Article({ data, update }) {

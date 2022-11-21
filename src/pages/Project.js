@@ -3,7 +3,7 @@ import Col       from 'react-bootstrap/Col'
 import Row       from 'react-bootstrap/Row'
 import Card      from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 export default function Project({ data, update }) {
