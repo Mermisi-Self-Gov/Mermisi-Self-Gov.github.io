@@ -6,7 +6,7 @@ export default function ResourceThumbnail({activity}) {
   return (<>
     <Col md={6} lg={4} xl={3}>
       <Card>
-        <Card.Img variant="top" src={ activity.img } loading="lazy"/>
+        <Card.Img variant="top" src={ activity.img } alt={`${activity.name} thumbnail` } loading="lazy"/>
         <Card.Body>
           <Card.Title> { activity.name } </Card.Title>
           <Card.Text>

@@ -19,7 +19,7 @@ export default function Resources({ data, update }) {
         <Row>
           <CardGroup>
             <Card>
-              <Card.Img variant="top" src="https://picsum.photos/1920/1080" />
+              <Card.Img variant="top" src="https://picsum.photos/1920/1080" alt="purpose thumbnail" />
               <Card.Body>
                 <Card.Title>What is this page for?</Card.Title>
                 <Card.Text>
@@ -31,7 +31,7 @@ export default function Resources({ data, update }) {
               </Card.Footer>
             </Card>
             <Card>
-              <Card.Img variant="top" src="https://picsum.photos/1920/1080" />
+              <Card.Img variant="top" src="https://picsum.photos/1920/1080" alt="benefits thumbnail" />
               <Card.Body>
                 <Card.Title>Additional benefits</Card.Title>
                 <Card.Text>
@@ -43,7 +43,7 @@ export default function Resources({ data, update }) {
               </Card.Footer>
             </Card>
             <Card>
-              <Card.Img variant="top" src="https://picsum.photos/1920/1080" />
+              <Card.Img variant="top" src="https://picsum.photos/1920/1080" alt="join us thumbnail" />
               <Card.Body>
                 <Card.Title>Want to join us?</Card.Title>
                 <Card.Text>
