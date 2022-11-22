@@ -3,10 +3,10 @@ import Container from 'react-bootstrap/Container'
 import Row       from 'react-bootstrap/Row'
 import { useEffect } from 'react'
 
-export default function Newspaper({ data, update }) {
+export default function Newspaper({ mode, data, update }) {
   
   useEffect(() => {
-    update()
+    if (!mode) update()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

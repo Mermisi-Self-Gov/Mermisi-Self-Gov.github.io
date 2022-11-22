@@ -13,7 +13,7 @@ import { Route, Routes } from 'react-router-dom'
 
 function updateArticles(setArticles) {
   return (() => {
-    fetch(`${window.location.origin}${process.env.PUBLIC_URL}/articles.json`)
+    fetch(`${window.location.origin}/articles.json`)
     .then(res => res.json())
     .then(
       (result) => {
@@ -24,7 +24,7 @@ function updateArticles(setArticles) {
 }
 function updateProjects(setProjects) {
   return (() => {
-    fetch(`${window.location.origin}${process.env.PUBLIC_URL}/projects.json`)
+    fetch(`${window.location.origin}/projects.json`)
     .then(res => res.json())
     .then(
       (result) => {
@@ -42,7 +42,7 @@ function updateProjects(setProjects) {
 }
 function updateResources(setResources) {
   return (() => {
-    fetch(`${window.location.origin}${process.env.PUBLIC_URL}/activities.json`)
+    fetch(`${window.location.origin}/resources.json`)
     .then(res => res.json())
     .then(
       (result) => {
@@ -54,9 +54,10 @@ function updateResources(setResources) {
 
 function App() {
 
-  const [ articles,  setArticles  ] = useState([])
-  const [ projects,  setProjects  ] = useState([[], [], []])
-  const [ resources, setResources ] = useState([])
+  const [ articles,   setArticles  ] = useState([])
+  const [ projects,   setProjects  ] = useState([[], [], []])
+  const [ resources,  setResources ] = useState([])
+  const [ userMode,   setUserMode  ] = useState(false)
 
   useEffect(() => {
     const articles_local  = window.localStorage.getItem('ARTICLES');
@@ -81,17 +82,18 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem('RESOURCES', JSON.stringify(resources));
   }, [ resources ])
+  
 
   return (
     <div className="App" style={{scrollBehavior:"smooth"}}>
-      <NavigationBar/>
+      <NavigationBar userMode={userMode} setUserMode={setUserMode} articles={articles} projects={projects} resources={resources}/>
       <Routes>
-        <Route exact path="/"              element={<Newspaper data={articles } update={updateArticles(setArticles)}/>}/>
-        <Route exact path="/newspaper"     element={<Newspaper data={articles } update={updateArticles(setArticles)}/>}/>
-        <Route exact path="/archive"       element={<Archive   data={projects } update={updateProjects(setProjects)}/>}/>
-        <Route exact path="/resources"     element={<Resources data={resources} update={updateResources(setResources)}/>}/>
-        <Route exact path="/archive/:id"   element={<Project   data={projects } update={updateProjects(setProjects)}/>}/>
-        <Route exact path="/newspaper/:id" element={<Article   data={articles } update={updateArticles(setArticles)}/>}/>
+        <Route exact path="/"              element={<Newspaper mode={userMode} data={articles } update={updateArticles(setArticles)  }/>}/>
+        <Route exact path="/newspaper"     element={<Newspaper mode={userMode} data={articles } update={updateArticles(setArticles)  }/>}/>
+        <Route exact path="/archive"       element={<Archive   mode={userMode} data={projects } update={updateProjects(setProjects)  }/>}/>
+        <Route exact path="/resources"     element={<Resources mode={userMode} data={resources} update={updateResources(setResources)}/>}/>
+        <Route exact path="/archive/:id"   element={<Project   mode={userMode} data={projects } update={updateProjects(setProjects)  }/>}/>
+        <Route exact path="/newspaper/:id" element={<Article   mode={userMode} data={articles } update={updateArticles(setArticles)  }/>}/>
       </Routes>
       <Footer/>
     </div>

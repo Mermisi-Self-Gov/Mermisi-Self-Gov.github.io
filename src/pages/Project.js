@@ -6,7 +6,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-export default function Project({ data, update }) {
+export default function Project({ mode, data, update }) {
   const { id } = useParams()
   const [ project, setProject ] = useState({id:id, name:"", thumbnail:"", tags:[], files:[], links:[], authors:[], desc:""})
   

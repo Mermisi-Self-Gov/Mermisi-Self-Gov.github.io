@@ -5,7 +5,7 @@ import Card      from 'react-bootstrap/Card'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-export default function Article({ data, update }) {
+export default function Article({ mode, data, update }) {
   const { id } = useParams()
   const [ article, setArticle ] = useState({id:id, name:"", thumbnail:"", authors:[], text:""})
   

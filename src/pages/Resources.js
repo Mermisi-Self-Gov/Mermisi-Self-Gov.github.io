@@ -7,10 +7,10 @@ import Alert     from 'react-bootstrap/Alert'
 import { useEffect } from 'react'
 import ResourceThumbnail from '../components/ResourceThumbnail.js'
 
-export default function Resources({ data, update }) {
+export default function Resources({ mode, data, update }) {
   
   useEffect(() => {
-    update()
+    if (!mode) update()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

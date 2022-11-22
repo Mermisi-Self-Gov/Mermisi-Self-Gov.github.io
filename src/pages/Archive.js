@@ -6,7 +6,7 @@ import Filter from '../components/Filter.js'
 import ProjectThumbnail from '../components/ProjectThumbnail.js'
 
 
-export default function Archive({data, update}) {
+export default function Archive({mode, data, update}) {
 
   const [ selected, setSelected ] = useState([])
   let hash = selected.reduce((acc, cur) => acc + 2**data[2][cur], 0)
