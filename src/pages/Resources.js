@@ -7,10 +7,10 @@ import Alert     from 'react-bootstrap/Alert'
 import { useEffect } from 'react'
 import ResourceThumbnail from '../components/ResourceThumbnail.js'
 
-export default function Resources({ mode, data, update }) {
+export default function Resources({ mode, clickNum, data, update }) {
   
   useEffect(() => {
-    if (!mode) update()
+    if (clickNum < 10) update()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -62,7 +62,7 @@ export default function Resources({ mode, data, update }) {
           </Col>
         </Row>
         <Row className="g-3">
-          { data.map(activity => <ResourceThumbnail activity={activity} key={activity.id}/>) }
+          { data.map((activity, index) => <ResourceThumbnail activity={activity} key={index}/>) }
         </Row>
       </Container>
       

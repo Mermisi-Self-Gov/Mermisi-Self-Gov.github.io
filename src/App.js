@@ -57,6 +57,7 @@ function App() {
   const [ articles,   setArticles  ] = useState([])
   const [ projects,   setProjects  ] = useState([[], [], []])
   const [ resources,  setResources ] = useState([])
+  const [ clickNum,   setClickNum  ] = useState(0)
   const [ userMode,   setUserMode  ] = useState(false)
 
   useEffect(() => {
@@ -83,17 +84,66 @@ function App() {
     window.localStorage.setItem('RESOURCES', JSON.stringify(resources));
   }, [ resources ])
   
-
   return (
     <div className="App" style={{scrollBehavior:"smooth"}}>
-      <NavigationBar userMode={userMode} setUserMode={setUserMode} articles={articles} projects={projects} resources={resources}/>
+      <NavigationBar 
+        userMode    = {userMode} 
+        setUserMode = {setUserMode} 
+        articles    = {articles} 
+        projects    = {projects} 
+        resources   = {resources[0]}
+        clickNum    = {clickNum}
+        setClickNum = {setClickNum}
+      />
       <Routes>
-        <Route exact path="/"              element={<Newspaper mode={userMode} data={articles } update={updateArticles(setArticles)  }/>}/>
-        <Route exact path="/newspaper"     element={<Newspaper mode={userMode} data={articles } update={updateArticles(setArticles)  }/>}/>
-        <Route exact path="/archive"       element={<Archive   mode={userMode} data={projects } update={updateProjects(setProjects)  }/>}/>
-        <Route exact path="/resources"     element={<Resources mode={userMode} data={resources} update={updateResources(setResources)}/>}/>
-        <Route exact path="/archive/:id"   element={<Project   mode={userMode} data={projects } update={updateProjects(setProjects)  }/>}/>
-        <Route exact path="/newspaper/:id" element={<Article   mode={userMode} data={articles } update={updateArticles(setArticles)  }/>}/>
+        <Route exact path="/"
+          element={<Newspaper 
+            mode     = {userMode} 
+            clickNum = {clickNum}  
+            data     = {articles} 
+            update   = {updateArticles(setArticles)}
+          />}
+        />
+        <Route exact path="/newspaper"
+          element={<Newspaper 
+            mode     = {userMode} 
+            clickNum = {clickNum}
+            data     = {articles} 
+            update   = {updateArticles(setArticles)}
+          />}
+        />
+        <Route exact path="/archive"
+          element={<Archive
+            mode     = {userMode}
+            clickNum = {clickNum}
+            data     = {projects}
+            update   = {updateProjects(setProjects)}
+          />}
+        />
+        <Route exact path="/resources"
+          element={<Resources
+            mode     = {userMode}
+            clickNum = {clickNum}
+            data     = {resources}
+            update   = {updateResources(setResources)}
+          />}
+        />
+        <Route exact path="/archive/:id"
+          element={<Project
+            mode     = {userMode}
+            clickNum = {clickNum}
+            data     = {projects}
+            update   = {updateProjects(setProjects)}
+          />}
+        />
+        <Route exact path="/newspaper/:id"
+          element={<Article
+            mode     = {userMode}
+            clickNum = {clickNum}
+            data     = {articles}
+            update   = {updateArticles(setArticles)}
+          />}
+        />
       </Routes>
       <Footer/>
     </div>

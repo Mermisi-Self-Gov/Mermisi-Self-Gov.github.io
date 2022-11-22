@@ -1,12 +1,24 @@
 [
   {
+    "name":"ბილიარდი, ტრიგონომეტრია და ვექტორები",
+    "authors":["ალექსანდრე ლომიძე"],
+    "thumbnail":"/thumbnails/pool.webp",
+    "thumbnaildownscaled":"/thumbnails/pool-downscaled.webp",
+    "tags":["math", "physics"],
+    "date":"12.06.2020",
+    "desc":"ამ პროექტიდან შეიტყობთ, თუ როგორ იცვლება ბილიარდის ბურთების ტრაექტორია შეჯახებისას",
+    "links":[
+      {"title":"სლაიდები", "href":"https://docs.google.com/presentation/d/11qw3SqPNzo8kaezVxC28avnh22dXr--ebghEw0Ox2aE/edit?usp=sharing"},
+      {"title":"ტექსტი", "href":"https://docs.google.com/document/d/1JjhcgU3QVccN1ZJsTGetDh75AEAaSETslfoFM8gfDuo/edit?usp=sharing"}
+    ]
+  },
+  {
     "name":"ანესთეტიკები",
     "authors":["ლუკა რაფავა"],
     "thumbnail":"/thumbnails/anaesthetics.webp",
     "thumbnaildownscaled":"/thumbnails/anaesthetics-downscaled.webp",
     "tags":["biology", "chemistry"],
     "date":"06.06.2022",
-    "id":0,
     "desc":"ინტეგრირებული პროექტი ქიმიასა და ბილოგიაში \"ანესთეტიკები\"",
     "links":[
       {"title":"სლაიდები", "href":"https://docs.google.com/presentation/d/1Cbai1jDsU4rpvagBDYO9G_4xjF0tBPx0J6xnjGLYm3Y/edit?usp=sharing"}
@@ -19,24 +31,9 @@
     "thumbnaildownscaled":"/thumbnails/gfx-downscaled.webp",
     "tags":["math"],
     "date":"06.06.2022",
-    "id":1,
     "desc":"ამ პროექტიდან შეიტყუბთ, თუ რა არის რეიკასტინგი (\"სხივების სროლის ტექნივა\"), როგორ მუშაობს პერსპექტიული პროეცირება და როგორ ხატავს კომპიუტერი სცენებს",
     "links":[
       {"title":"სლაიდები", "href":"https://docs.google.com/presentation/d/1nCqNGy6NMEwCnsVmS2r2QXi5v2VLBAc_UH9kOPk-42k/edit?usp=sharing"}
-    ]
-  },
-  {
-    "name":"ბილიარდი, ტრიგონომეტრია და ვექტორები",
-    "authors":["ალექსანდრე ლომიძე"],
-    "thumbnail":"/thumbnails/pool.webp",
-    "thumbnaildownscaled":"/thumbnails/pool-downscaled.webp",
-    "tags":["math", "physics"],
-    "date":"12.06.2020",
-    "id":2,
-    "desc":"ამ პროექტიდან შეიტყობთ, თუ როგორ იცვლება ბილიარდის ბურთების ტრაექტორია შეჯახებისას",
-    "links":[
-      {"title":"სლაიდები", "href":"https://docs.google.com/presentation/d/11qw3SqPNzo8kaezVxC28avnh22dXr--ebghEw0Ox2aE/edit?usp=sharing"},
-      {"title":"ტექსტი", "href":"https://docs.google.com/document/d/1JjhcgU3QVccN1ZJsTGetDh75AEAaSETslfoFM8gfDuo/edit?usp=sharing"}
     ]
   }
 ]

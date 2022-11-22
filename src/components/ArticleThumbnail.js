@@ -3,11 +3,11 @@ import Card from 'react-bootstrap/Card'
 
 import { Link } from 'react-router-dom'
 
-export default function ArticleThumbnail({ article }) {
+export default function ArticleThumbnail({ article, id }) {
   return (
     <>
       <Col md={6}>
-        <Link to={`/Newspaper/${article.id}`} style={{textDecoration:"none"}}>
+        <Link to={`/Newspaper/${id}`} style={{textDecoration:"none"}}>
           <Card>
             <Card.Img variant="top" src={ article.thumbnail } alt={`${article.name} thumbnail`} loading="lazy"/>
             <Card.Body>

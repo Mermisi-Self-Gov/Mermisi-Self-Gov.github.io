@@ -6,20 +6,20 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-export default function Project({ mode, data, update }) {
+export default function Project({ mode, clickNum, data, update }) {
   const { id } = useParams()
-  const [ project, setProject ] = useState({id:id, name:"", thumbnail:"", tags:[], files:[], links:[], authors:[], desc:""})
+  const [ project, setProject ] = useState(data[0][id])
   
   useEffect(() => {
-    update()
+    if (clickNum < 10) update()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (data[0].length > 0) {
-      setProject(data[0][id])
-    }
+    setProject(data[0][id])
   }, [data, id])
   
+  if (project == undefined) return
+
   return (
     <>
       { /* Thumbnail */}

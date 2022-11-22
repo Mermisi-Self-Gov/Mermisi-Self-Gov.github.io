@@ -6,13 +6,13 @@ import Filter from '../components/Filter.js'
 import ProjectThumbnail from '../components/ProjectThumbnail.js'
 
 
-export default function Archive({mode, data, update}) {
+export default function Archive({mode, clickNum, data, update}) {
 
   const [ selected, setSelected ] = useState([])
   let hash = selected.reduce((acc, cur) => acc + 2**data[2][cur], 0)
 
   useEffect(() => {
-    update()
+    if (clickNum < 10) update()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleTags(tag) {
@@ -27,7 +27,12 @@ export default function Archive({mode, data, update}) {
       <Container className="my-3">
         <Row className="g-3">
           <Filter all={data[1]} sel={selected} onChange={handleTags}/>
-          { data[0].filter(proj => {return (proj.taghash & hash) === hash}).map(project => <ProjectThumbnail project={project} key={project.id}/>) }
+          { 
+            data[0]
+              .filter(proj => {return (proj.taghash & hash) === hash})
+              .map((project, index) => <ProjectThumbnail project={project} id={index} key={index}/>)
+              .reverse()
+          }
         </Row>
       </Container>
     </>

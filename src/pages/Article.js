@@ -5,20 +5,20 @@ import Card      from 'react-bootstrap/Card'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-export default function Article({ mode, data, update }) {
+export default function Article({ mode, clickNum, data, update }) {
   const { id } = useParams()
-  const [ article, setArticle ] = useState({id:id, name:"", thumbnail:"", authors:[], text:""})
+  const [ article, setArticle ] = useState(data[id])
   
   useEffect(() => {
-    update()
+    if (clickNum < 10) update()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (data.length > 0) {
-      setArticle(data[id])
-    }
+    setArticle(data[id])
   }, [data, id])
   
+  if (article == undefined) return
+
   return (
     <>
       <style>{`.article-text>img { width:100% } `}</style>

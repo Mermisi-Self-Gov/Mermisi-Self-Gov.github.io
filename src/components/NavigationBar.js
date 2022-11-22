@@ -12,14 +12,14 @@ import UkraineBanner from './UkraineBanner'
 // for more info about navbars in react-bootstrap visit:
 // https://react-bootstrap.github.io/components/navbar/
 //
-export default function NavigationBar({ userMode, setUserMode, articles, projects, resources}) {
+export default function NavigationBar({ userMode, setUserMode, articles, projects, resources, clickNum, setClickNum }) {
   
-  const [ clickNum, setClickNum ] = useState(0)
 
   function incrementClickNum() {
     if (window.location.pathname !== "/" && clickNum < 10)
       setClickNum(0);
-    else setClickNum(clickNum + 1)
+    else if (clickNum < 10)
+      setClickNum(clickNum + 1)
   }
   
   // source: https://stackoverflow.com/questions/57709550/how-to-download-text-from-javascript-variable-on-all-browsers
