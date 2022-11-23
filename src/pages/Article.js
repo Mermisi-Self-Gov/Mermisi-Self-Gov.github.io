@@ -17,7 +17,7 @@ export default function Article({ mode, clickNum, data, update }) {
     setArticle(data[id])
   }, [data, id])
   
-  if (article == undefined) return
+  if (article === undefined) return
 
   return (
     <>

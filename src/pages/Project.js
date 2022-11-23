@@ -18,7 +18,7 @@ export default function Project({ mode, clickNum, data, update }) {
     setProject(data[0][id])
   }, [data, id])
   
-  if (project == undefined) return
+  if (project === undefined) return
 
   return (
     <>

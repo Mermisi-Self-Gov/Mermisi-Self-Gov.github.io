@@ -12,7 +12,7 @@ export default function ResourceThumbnail({activity}) {
           <Card.Text>
             { activity.desc }
           </Card.Text>
-          <a href={ activity.url } target="_blank"><Button variant="primary"> Learn more! </Button></a>
+          <a href={ activity.url } target="_blank" rel="noreferrer"><Button variant="primary"> Learn more! </Button></a>
         </Card.Body>
       </Card>
     </Col>

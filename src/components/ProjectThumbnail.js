@@ -9,7 +9,7 @@ export default function GridThumbnail({ project, id }) {
     <>
       <Col md={6} lg={4} xl={3}>
         <Link to={`/Archive/${id}`} style={{textDecoration:"none"}}>
-          <Card>
+          <Card> 
             <Card.Img variant="top" src={ project.thumbnaildownscaled } alt={`${project.name} thumbnail`} loading="lazy"/>
             <Card.Body className="pb-2">
               <Card.Title className="">{ project.name }</Card.Title>
