@@ -114,6 +114,7 @@ export default function Project({ mode, clickNum, data, setData, update, updateT
     </>
   ); else if (project.visibility) return (
     <>
+      <style>{`.project-desc>img { max-width:100% } `}</style>
       { /* Thumbnail */}
       <Container className="my-3">
         <Card>
@@ -160,9 +161,11 @@ export default function Project({ mode, clickNum, data, setData, update, updateT
                 { /*
                 <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
                 */ }
-                <Card.Text className="" style={{whiteSpace: "pre-line"}}>
-                    { project.desc }
-                </Card.Text>
+                <Card.Text
+                  className="project-desc"
+                  style={{whiteSpace: "pre-line"}} 
+                  dangerouslySetInnerHTML={{ __html: project.desc }}
+                />
                 { /* 
                 <Card.Link href="#">Card Link</Card.Link>
                 <Card.Link href="#">Another Link</Card.Link>
