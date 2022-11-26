@@ -13,7 +13,13 @@ export default function Newspaper({ mode, clickNum, data, update }) {
     <>
       <Container className="my-3">
         <Row className="g-3">
-          { data.map((article, index) => <ArticleThumbnail article={article} id={index} key={index}/>).reverse() }
+          { 
+            //data.filter(x=>(x.visibility===2 || mode)).map((article, index) => <ArticleThumbnail article={article} id={index} key={index}/>).reverse()
+            data.map((article, index) => [article, index])
+                .filter(([article, index]) => (article.visibility===2 || mode))
+                .map(([article, index]) => <ArticleThumbnail article={article} id={index} key={index}/>)
+                .reverse()
+          }
         </Row>
       </Container>
     </>

@@ -87,13 +87,16 @@ function App() {
   return (
     <div className="App" style={{scrollBehavior:"smooth"}}>
       <NavigationBar 
-        userMode    = {userMode} 
-        setUserMode = {setUserMode} 
-        articles    = {articles} 
-        projects    = {projects} 
-        resources   = {resources[0]}
-        clickNum    = {clickNum}
-        setClickNum = {setClickNum}
+        userMode     = {userMode} 
+        setUserMode  = {setUserMode} 
+        articles     = {articles} 
+        setArticles  = {setArticles}
+        projects     = {projects}
+        setProjects  = {setProjects}
+        resources    = {resources}
+        setResources = {setResources}
+        clickNum     = {clickNum}
+        setClickNum  = {setClickNum}
       />
       <Routes>
         <Route exact path="/"
@@ -141,6 +144,7 @@ function App() {
             mode     = {userMode}
             clickNum = {clickNum}
             data     = {articles}
+            setData  = {setArticles}
             update   = {updateArticles(setArticles)}
           />}
         />

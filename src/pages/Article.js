@@ -2,10 +2,23 @@ import Container from 'react-bootstrap/Container'
 import Col       from 'react-bootstrap/Col'
 import Row       from 'react-bootstrap/Row'
 import Card      from 'react-bootstrap/Card'
+import Form      from 'react-bootstrap/Form'
+import Dropdown  from 'react-bootstrap/Dropdown'
+
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-export default function Article({ mode, clickNum, data, update }) {
+function NotFound() {
+  return (<>
+    <Container className="my-5">
+      <p className="text-center">Sorry, the article you are looking for either does not exist or was deleted</p>
+      <p className="text-center">Here's a picture of a cat instead</p>
+      <img className="rounded mx-auto d-block" width="400px" src="https://thiscatdoesnotexist.com" alt="cat"/>
+    </Container>
+  </>)
+}
+
+export default function Article({ mode, clickNum, data, setData, update }) {
   const { id } = useParams()
   const [ article, setArticle ] = useState(data[id])
   
@@ -16,12 +29,76 @@ export default function Article({ mode, clickNum, data, update }) {
   useEffect(() => {
     setArticle(data[id])
   }, [data, id])
-  
-  if (article === undefined) return
 
-  return (
+  function handleChange(prop, value) {
+    let arr = [...data]
+    arr[id][prop] = value
+    setData(arr)
+  }
+
+  let vis_opt = ["Hidden", "Unlisted", "Visible"]
+  
+  if (article === undefined) return (<><NotFound/></>)
+
+  if (mode) return (
     <>
-      <style>{`.article-text>img { width:100% } `}</style>
+      <Container className="my-3">
+        <Form>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Article title</Form.Label>
+            <Col>
+              <Form.Control type="" value={article.name} onChange={(e)=>handleChange("name", e.target.value)} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Article thumbnail url</Form.Label>
+            <Col>
+              <Form.Control type="" value={article.thumbnail} onChange={(e)=>handleChange("thumbnail", e.target.value)} placeholder="" />
+              <img className="mt-2" src={article.thumbnail} alt="thumbnail preview" width="200px"/>
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Card text</Form.Label>
+            <Col>
+              <Form.Control value={article.desc} as="textarea" rows={3} type="" onChange={(e)=>handleChange("desc", e.target.value)} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Authors</Form.Label>
+            <Col>
+              <Form.Control type="" value={article.authors} onChange={(e)=>handleChange("authors", e.target.value.split(','))} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Publication date</Form.Label>
+            <Col>
+              <Form.Control type="" value={article.date} onChange={(e)=>handleChange("date", e.target.value)} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Visibility</Form.Label>
+            <Col>
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic">
+                  { vis_opt[data[id].visibility] }
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={(e)=>handleChange("visibility", 0)}>Hidden</Dropdown.Item>
+                  <Dropdown.Item onClick={(e)=>handleChange("visibility", 1)}>Unlisted</Dropdown.Item>
+                  <Dropdown.Item onClick={(e)=>handleChange("visibility", 2)}>Visible</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="">
+            <Form.Control value={article.text} as="textarea" rows={20} type="" onChange={(e)=>handleChange("text", e.target.value)} placeholder="" />
+          </Form.Group>
+        </Form>
+      </Container>
+    </>
+  ); else if (article.visibility > 0) return (
+    <>
+      <style>{`.article-text>img { max-width:100% } `}</style>
       { /* Thumbnail */}
       <Container className="my-3">
         <Card>
@@ -31,7 +108,7 @@ export default function Article({ mode, clickNum, data, update }) {
               { article.name }
             </Card.Title>
             <Card.Subtitle className="text-secondary">
-              { article.authors.map(name => ` ${name}`) }, { article.date }
+              { article.authors.map(name => `${name}, `) }{ article.date }
             </Card.Subtitle>
           </Card.Body>
           <Card.Footer>
@@ -74,6 +151,8 @@ export default function Article({ mode, clickNum, data, update }) {
         </Row>
       </Container>
     </>
-  )
+  ); else return (<>
+    <NotFound/>
+  </>)
 }
 
