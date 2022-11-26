@@ -22,20 +22,25 @@ function updateArticles(setArticles) {
     )
   })
 }
+
+function updateTags(result, setProjects) {
+  let tagset  = [...new Set([].concat(...result.map(project => project.tags)))]
+  let tagdict = {}
+  for (let i = 0; i < tagset.length; i++)
+    tagdict[tagset[i]] = i 
+  result.forEach((proj) => {
+    proj.taghash = proj.tags.reduce((acc, cur) => acc + 2**tagdict[cur], 0)
+  })
+  setProjects(oldData => [result, tagset, tagdict])
+}
+
 function updateProjects(setProjects) {
   return (() => {
     fetch(`${window.location.origin}/projects.json`)
     .then(res => res.json())
     .then(
       (result) => {
-        let tagset  = [...new Set([].concat(...result.map(project => project.tags)))]
-        let tagdict = {}
-        for (let i = 0; i < tagset.length; i++)
-          tagdict[tagset[i]] = i 
-        result.forEach((proj) => {
-          proj.taghash = proj.tags.reduce((acc, cur) => acc + 2**tagdict[cur], 0)
-        })
-        setProjects(oldData => [result, tagset, tagdict])
+        updateTags(result, setProjects)
       }
     )
   })
@@ -121,6 +126,7 @@ function App() {
             clickNum = {clickNum}
             data     = {projects}
             update   = {updateProjects(setProjects)}
+            updateTags = {updateTags}
           />}
         />
         <Route exact path="/resources"
@@ -133,11 +139,12 @@ function App() {
         />
         <Route exact path="/archive/:id"
           element={<Project
-            mode     = {userMode}
-            clickNum = {clickNum}
-            data     = {projects}
-            setData  = {setProjects}
-            update   = {updateProjects(setProjects)}
+            mode      = {userMode}
+            clickNum  = {clickNum}
+            data      = {projects}
+            setData   = {setProjects}
+            update     = {updateProjects(setProjects)}
+            updateTags = {updateTags}
           />}
         />
         <Route exact path="/newspaper/:id"

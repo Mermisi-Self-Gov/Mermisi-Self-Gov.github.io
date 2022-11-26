@@ -18,7 +18,7 @@ function NotFound() {
   </>)
 }
 
-export default function Project({ mode, clickNum, data, setData, update }) {
+export default function Project({ mode, clickNum, data, setData, update, updateTags }) {
   const { id } = useParams()
   const [ project, setProject ] = useState(data[0][id])
   
@@ -34,10 +34,11 @@ export default function Project({ mode, clickNum, data, setData, update }) {
     let arr = [...data[0]]
     arr[id][prop] = value
     setData([arr, data[1], data[2]])
+    if (prop === "tags") 
+      updateTags(data[0], setData)
   }
   
   let vis_opt = ["Hidden", "Unlisted", "Visible"]
-
   if (project === undefined) return (<><NotFound/></>)
   
   if (mode) return (
@@ -78,6 +79,12 @@ export default function Project({ mode, clickNum, data, setData, update }) {
             <Form.Label column sm={2}>Publication date</Form.Label>
             <Col>
               <Form.Control type="" value={project.date} onChange={(e)=>handleChange("date", e.target.value)} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Tags</Form.Label>
+            <Col>
+              <Form.Control type="" value={project.tags} onChange={(e)=>handleChange("tags", e.target.value.split(' ').join('').split(','))} placeholder="" />
             </Col>
           </Form.Group>
           <Form.Group as={Row} className="mb-3" controlId="">
