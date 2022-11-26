@@ -7,6 +7,7 @@ import Form      from 'react-bootstrap/Form'
 import Dropdown  from 'react-bootstrap/Dropdown'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap'
 
 function NotFound() {
   return (<>
@@ -103,6 +104,34 @@ export default function Project({ mode, clickNum, data, setData, update, updateT
             </Col>
           </Form.Group>
           <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Links</Form.Label>
+            <Col className=''>
+              { 
+                project.links.map(({title, href}, index) => 
+                  <Form.Group as={Row} className="mb-2" key={index}>
+                    <Col sm={3}>
+                      <Form.Control type="" value={title} 
+                        onChange={(e) => handleChange("links",(() => {let arr = [...project.links]; arr[index].title = e.target.value; return arr})())} 
+                        placeholder=""
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Control type="" value={href} 
+                        onChange={(e) => handleChange("links",(() => {let arr = [...project.links]; arr[index].href  = e.target.value; return arr})())
+                        } 
+                        placeholder=""
+                      />
+                    </Col>
+                    <Col>
+                      <Button variant='danger' onClick={()=>{handleChange("links",[...project.links].filter((o,i)=>i!=index))}}> delete </Button>
+                    </Col>
+                  </Form.Group>
+                )
+              }
+              <Button onClick={()=>handleChange("links", [...project.links, {title:"example", href:"https://example.com"}])}>Add link</Button>
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
             <Form.Label column sm={2}>Project description</Form.Label>
             <Col>
               <Form.Control value={project.desc} as="textarea" rows={7} type="" onChange={(e)=>handleChange("desc", e.target.value)} placeholder="" />
@@ -149,7 +178,7 @@ export default function Project({ mode, clickNum, data, setData, update, updateT
                     </Card.Text>
                     */ }
                     {
-                      project.links.map(link => <Card.Link href={link.href} key={link.href} target="_blank"> {link.title} </Card.Link>)
+                      project.links.map((link, index) => <Card.Link href={link.href} key={index} target="_blank"> {link.title} </Card.Link>)
                     }
                   </Card.Body>
                 </Card>
