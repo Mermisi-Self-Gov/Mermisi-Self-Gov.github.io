@@ -13,7 +13,7 @@ function NotFound() {
     <Container className="my-5">
       <p className="text-center">Sorry, the article you are looking for either does not exist or was deleted</p>
       <p className="text-center">Here's a picture of a cat instead</p>
-      <img className="rounded mx-auto d-block" width="400px" src="https://thiscatdoesnotexist.com" alt="cat"/>
+      <img className="rounded mx-auto d-block" style={{maxWidth:`100%`, width:`400px`}} src="https://thiscatdoesnotexist.com" alt="cat"/>
     </Container>
   </>)
 }
