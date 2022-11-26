@@ -54,7 +54,9 @@ export default function Article({ mode, clickNum, data, setData, update }) {
             <Form.Label column sm={2}>Article thumbnail url</Form.Label>
             <Col>
               <Form.Control type="" value={article.thumbnail} onChange={(e)=>handleChange("thumbnail", e.target.value)} placeholder="" />
-              <img className="mt-2" src={article.thumbnail} alt="thumbnail preview" width="200px"/>
+              <a href={article.thumbnail}>
+                <img className="mt-2" src={article.thumbnail} alt="thumbnail preview" width="200px"/>
+              </a>
             </Col>
           </Form.Group>
           <Form.Group as={Row} className="mb-3" controlId="">
@@ -80,7 +82,7 @@ export default function Article({ mode, clickNum, data, setData, update }) {
             <Col>
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-basic">
-                  { vis_opt[data[id].visibility] }
+                  { vis_opt[article.visibility] }
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={(e)=>handleChange("visibility", 0)}>Hidden</Dropdown.Item>

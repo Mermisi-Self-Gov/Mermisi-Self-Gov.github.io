@@ -52,10 +52,10 @@ export default function NavigationBar({
           thumbnail:"https://picsum.photos/1920/1080",
           thumbnaildownscaled:"https://picsum.photos/1920/1080",
           tags:["math"],
-          date: `${cDate.getDate()}.${cDate.getMonth()}.${cDate.getYear()}`,
+          date: `${cDate.getDate()}.${cDate.getMonth()}.${cDate.getFullYear()}`,
           desc: "The quick brown fox jumps over the lazy dog",
           links: [{title:"example.com", href:"https://example.com/"}],
-          visibility: 2.
+          visibility: 2,
         }
       ],
       projects[1],
@@ -71,7 +71,7 @@ export default function NavigationBar({
         url: "https://example.com",
         img: "https://picsum.photos/1920/1080",
         desc: "Lorem ipsum dolor sit amet",
-        visibility: 2
+        visibility: 2,
       }
     ])
   }
@@ -122,8 +122,8 @@ export default function NavigationBar({
         <Dropdown.Toggle>Download</Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={()=>{download("articles.json", JSON.stringify(articles))}}> articles.json </Dropdown.Item>
-          <Dropdown.Item onClick={()=>{download("projects.json", JSON.stringify(projects))}}> projects.json </Dropdown.Item>
-          <Dropdown.Item onClick={()=>{download("resources.json", JSON.stringify(resources[0]))}}> resources.json </Dropdown.Item>
+          <Dropdown.Item onClick={()=>{download("projects.json", JSON.stringify(projects[0]))}}> projects.json </Dropdown.Item>
+          <Dropdown.Item onClick={()=>{download("resources.json", JSON.stringify(resources))}}> resources.json </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </Nav>)

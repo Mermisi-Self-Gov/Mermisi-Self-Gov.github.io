@@ -136,6 +136,7 @@ function App() {
             mode     = {userMode}
             clickNum = {clickNum}
             data     = {projects}
+            setData  = {setProjects}
             update   = {updateProjects(setProjects)}
           />}
         />

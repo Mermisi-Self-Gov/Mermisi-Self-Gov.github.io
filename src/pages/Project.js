@@ -3,10 +3,22 @@ import Col       from 'react-bootstrap/Col'
 import Row       from 'react-bootstrap/Row'
 import Card      from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Form      from 'react-bootstrap/Form'
+import Dropdown  from 'react-bootstrap/Dropdown'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-export default function Project({ mode, clickNum, data, update }) {
+function NotFound() {
+  return (<>
+    <Container className="my-5">
+      <p className="text-center">Sorry, the project you are looking for either does not exist or was deleted</p>
+      <p className="text-center">Here's a picture of a cat instead</p>
+      <img className="rounded mx-auto d-block" style={{maxWidth:`100%`, width:`400px`}} src="https://thiscatdoesnotexist.com" alt="cat"/>
+    </Container>
+  </>)
+}
+
+export default function Project({ mode, clickNum, data, setData, update }) {
   const { id } = useParams()
   const [ project, setProject ] = useState(data[0][id])
   
@@ -17,10 +29,83 @@ export default function Project({ mode, clickNum, data, update }) {
   useEffect(() => {
     setProject(data[0][id])
   }, [data, id])
-  
-  if (project === undefined) return
 
-  return (
+  function handleChange(prop, value) {
+    let arr = [...data[0]]
+    arr[id][prop] = value
+    setData([arr, data[1], data[2]])
+  }
+  
+  let vis_opt = ["Hidden", "Unlisted", "Visible"]
+
+  if (project === undefined) return (<><NotFound/></>)
+  
+  if (mode) return (
+    <>
+      <Container className="my-3">
+        <Form>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Project title</Form.Label>
+            <Col>
+              <Form.Control type="" value={project.name} onChange={(e)=>handleChange("name", e.target.value)} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Project thumbnail url</Form.Label>
+            <Col>
+              <Form.Control type="" value={project.thumbnail} onChange={(e)=>handleChange("thumbnail", e.target.value)} placeholder="" />
+              <a href={project.thumbnail}>
+                <img className="mt-2" src={project.thumbnail} alt="thumbnail preview" width="200px"/>
+              </a>
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Project thumbnail url (downscaled)</Form.Label>
+            <Col>
+              <Form.Control type="" value={project.thumbnaildownscaled} onChange={(e)=>handleChange("thumbnail", e.target.value)} placeholder="" />
+              <a href={project.thumbnaildownscaled}>
+                <img className="mt-2" src={project.thumbnaildownscaled} alt="thumbnail preview" width="200px"/>
+              </a>
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Authors</Form.Label>
+            <Col>
+              <Form.Control type="" value={project.authors} onChange={(e)=>handleChange("authors", e.target.value.split(','))} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Publication date</Form.Label>
+            <Col>
+              <Form.Control type="" value={project.date} onChange={(e)=>handleChange("date", e.target.value)} placeholder="" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Visibility</Form.Label>
+            <Col>
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic">
+                  { vis_opt[project.visibility] }
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={(e)=>handleChange("visibility", 0)}>Hidden</Dropdown.Item>
+                  <Dropdown.Item onClick={(e)=>handleChange("visibility", 1)}>Unlisted</Dropdown.Item>
+                  <Dropdown.Item onClick={(e)=>handleChange("visibility", 2)}>Visible</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="">
+            <Form.Label column sm={2}>Project description</Form.Label>
+            <Col>
+              <Form.Control value={project.desc} as="textarea" rows={7} type="" onChange={(e)=>handleChange("desc", e.target.value)} placeholder="" />
+            </Col>
+          </Form.Group>
+
+        </Form>
+      </Container>
+    </>
+  ); else if (project.visibility) return (
     <>
       { /* Thumbnail */}
       <Container className="my-3">
@@ -81,6 +166,8 @@ export default function Project({ mode, clickNum, data, update }) {
         </Row>
       </Container>
     </>
-  )
+  ); else return (<>
+    <NotFound/>
+  </>)
 }
 

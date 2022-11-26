@@ -29,8 +29,9 @@ export default function Archive({mode, clickNum, data, update}) {
           <Filter all={data[1]} sel={selected} onChange={handleTags}/>
           { 
             data[0]
-              .filter(proj => {return (proj.taghash & hash) === hash})
-              .map((project, index) => <ProjectThumbnail project={project} id={index} key={index}/>)
+              .map((project, index) => [project, index])
+              .filter(([project, index]) => ((project.taghash & hash) === hash) && (project.visibility === 2 || mode))
+              .map(([project, index]) => <ProjectThumbnail project={project} id={index} key={index}/>)
               .reverse()
           }
         </Row>
