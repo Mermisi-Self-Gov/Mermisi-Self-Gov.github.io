@@ -123,7 +123,7 @@ export default function Project({ mode, clickNum, data, setData, update, updateT
                       />
                     </Col>
                     <Col>
-                      <Button variant='danger' onClick={()=>{handleChange("links",[...project.links].filter((o,i)=>i!=index))}}> delete </Button>
+                      <Button variant='danger' onClick={()=>{handleChange("links",[...project.links].filter((o,i)=>i!==index))}}> delete </Button>
                     </Col>
                   </Form.Group>
                 )

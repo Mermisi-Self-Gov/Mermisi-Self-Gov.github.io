@@ -26,7 +26,6 @@ export default function NavigationBar({
   }
 
   function addArticle() {
-    let cDate = new Date()
     setArticles([
       ...articles, 
       {
@@ -35,14 +34,13 @@ export default function NavigationBar({
         thumbnail:"https://picsum.photos/1920/1080",
         text: "The quick brown fox jumps over the lazy dog\n\n<img width=\"400px\" src=\"https://thiscatdoesnotexist.com\" alt=\"cat\"/>\n\n<h1>MEW</h1>",
         desc: "The quick brown fox jumps over the lazy dog",
-        date: `${cDate.getDate()}.${cDate.getMonth()}.${cDate.getFullYear()}`,
+        date: `${new Date().toLocaleDateString("uk-Uk")}`,
         visibility: 2,
       }
     ])
   }
 
   function addProject() {
-    let cDate = new Date()
     setProjects([
       [
         ...projects[0], 
@@ -52,7 +50,7 @@ export default function NavigationBar({
           thumbnail:"https://picsum.photos/1920/1080",
           thumbnaildownscaled:"https://picsum.photos/1920/1080",
           tags:["math"],
-          date: `${cDate.getDate()}.${cDate.getMonth()}.${cDate.getFullYear()}`,
+          date: `${new Date().toLocaleDateString("uk-Uk")}`,
           desc: "The quick brown fox jumps over the lazy dog",
           links: [{title:"example.com", href:"https://example.com/"}],
           visibility: 2,
@@ -139,7 +137,7 @@ export default function NavigationBar({
           <Nav className="me-auto">
             <Link className="nav-link" to="/Newspaper" onClick={window.scrollTo(0,0)}>Newspaper</Link>
             <Link className="nav-link" to="/Archive"   onClick={window.scrollTo(0,0)}>Archive</Link>
-            <Link className="nav-link" to="/Resources" onClick={window.scrollTo(0,0)}>Resources</Link>
+            { /*<Link className="nav-link" to="/Resources" onClick={window.scrollTo(0,0)}>Resources</Link> */ }
           </Nav>
           <AdvancedOptions/>
         </Navbar.Collapse>
